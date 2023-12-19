@@ -1,9 +1,21 @@
-const calculator = document.querySelector('#calculator');
+function sum(a, b){
+    return a + b;
+};
 
-//Create buttons 0-9
-for(let i = 0; i < 10; i++){
-    const button = document.createElement('button');
-    button.className = `button${i}`;
-    button.textContent = `${i}`;
-    calculator.appendChild(button);
+function subtract(a, b){
+    return a - b;
+};
+
+function factor(a, b){
+    return a * b;
+};
+
+function divide(a, b){
+    return a % b;
+};
+
+function sumAll(array){
+    const initialValue = 0;
+    return array.reduce((previousValue, currentValue) =>
+        previousValue + currentValue, initialValue,);
 };
