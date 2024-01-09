@@ -46,6 +46,17 @@ equalButton.addEventListener('click', (e) => {
     solutionDisplay.textContent = solution;
 });
 
+clearButton.addEventListener('click', (e) => {
+    currentNum = "";
+    previousNum = "";
+    operator = "";
+    solution = "";
+    currentDisplayNum.textContent = "";
+    previousDisplayNum.textContent = "";
+    operatorDisplaySign.textContent = "";
+    solutionDisplay.textContent = "";
+})
+
 function operate(num1, operator, num2){
     num1 = Number(previousNum);
     num2 = Number(currentNum);
@@ -80,5 +91,5 @@ function factor(a, b){
 };
 
 function divide(a, b){
-    return a % b;
+    return a / b;
 };
