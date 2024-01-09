@@ -2,30 +2,43 @@ const numButton = document.querySelectorAll('.num-button');
 const operationButton = document.querySelectorAll('.operation-button');
 const equalButton = document.querySelector('#equal-button');
 const clearButton = document.querySelector('#clear-button');
-const valueDisplay = document.querySelector('#value-display');
 
-let firstNum = 0;
-let secondNum = 0;
-let operator = ''; 
+const valueDisplay = document.querySelector('#value-display');
+const previousDisplayNum = document.querySelector('.previous-num');
+const operatorDisplaySign = document.querySelector('.operator');
+const currentDisplayNum = document.querySelector('.current-num');
+
+let previousNum = "";
+let currentNum = "";
+let operator = ""; 
 
 numButton.forEach((button) =>
     button.addEventListener('click', (e) => {
-        const valueNum = document.createElement('p');
-        valueNum.textContent = e.target.textContent;
-        valueDisplay.appendChild(valueNum);
-
-        firstNum =+ e.target.textContent;
-        console.log(firstNum);
+        handleNumber(e.target.textContent);
     })
 );
+
+function handleNumber(number){
+    if (currentNum.length <= 11) {
+        currentNum += number;
+        currentDisplayNum.textContent = currentNum;
+    }
+};
 
 operationButton.forEach((button) =>
     button.addEventListener('click', (e) => {
-        const valueOperator = document.createElement('p');
-        valueOperator.textContent = e.target.textContent;
-        valueDisplay.appendChild(valueOperator);
+        handleOperator(e.target.textContent);
     })
 );
+
+function handleOperator(op){
+    operator = op;
+    operatorDisplaySign.textContent = operator;
+    previousNum = currentNum;
+    previousDisplayNum.textContent = previousNum;
+    currentNum = "";
+    currentDisplayNum.textContent = "";
+}
 
 function sum(a, b){
     return a + b;
