@@ -43,7 +43,7 @@ function handleOperator(op){
 
 equalButton.addEventListener('click', (e) => {
     solution = operate(previousNum, operator, currentNum);
-    solutionDisplay.textContent = solution;
+    solutionDisplay.textContent = " = " + solution;
 });
 
 clearButton.addEventListener('click', (e) => {
@@ -67,14 +67,14 @@ function operate(num1, operator, num2){
         case '-':
             return subtract(num1, num2);
             break;
-        case '*':
+        case "\u00d7":
             return factor(num1, num2);
             break;
-        case '%':
+        case '\u00f7':
             return divide(num1, num2);
             break;
         default:
-            return 'not a option, try again.'
+            return 'Try again.'
     }
 };
 
