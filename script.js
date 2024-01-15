@@ -2,6 +2,7 @@ const numButton = document.querySelectorAll('.num-button');
 const operationButton = document.querySelectorAll('.operation-button');
 const equalButton = document.querySelector('#equal-button');
 const clearButton = document.querySelector('#clear-button');
+const decimalButton =document.querySelector('#decimal-button');
 
 const previousDisplayNum = document.querySelector('.previous-num');
 const operatorDisplaySign = document.querySelector('.operator');
@@ -16,8 +17,13 @@ let solution = "";
 numButton.forEach((button) =>
     button.addEventListener('click', (e) => {
         handleNumber(e.target.textContent);
+    }),
+    decimalButton.addEventListener('click', (e) => {
+        document.getElementById("decimal-button").disabled = true;
     })
 );
+
+
 
 function handleNumber(number){
     if (currentNum.length <= 11) {
@@ -29,6 +35,7 @@ function handleNumber(number){
 operationButton.forEach((button) =>
     button.addEventListener('click', (e) => {
         handleOperator(e.target.textContent);
+        document.getElementById("decimal-button").disabled = false;
     })
 );
 
@@ -74,7 +81,7 @@ function operate(num1, operator, num2){
             return divide(num1, num2);
             break;
         default:
-            return 'Try again.'
+            return ''
     }
 };
 
