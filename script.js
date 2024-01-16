@@ -40,12 +40,22 @@ operationButton.forEach((button) =>
 );
 
 function handleOperator(op){
-    operator = op;
-    operatorDisplaySign.textContent = operator;
-    previousNum = currentNum;
-    previousDisplayNum.textContent = previousNum;
-    currentNum = "";
-    currentDisplayNum.textContent = "";
+    if(operator === ''){
+        operator = op;
+        operatorDisplaySign.textContent = operator;
+        previousNum = currentNum;
+        previousDisplayNum.textContent = previousNum;
+        currentNum = "";
+        currentDisplayNum.textContent = "";
+    } else {
+        solution = operate(previousNum, operator, currentNum);
+        previousNum = solution;
+        previousDisplayNum.textContent = solution;
+        operator = op;
+        operatorDisplaySign.textContent = operator;
+        currentNum = "";
+        currentDisplayNum.textContent = "";
+    }
 }
 
 equalButton.addEventListener('click', (e) => {
